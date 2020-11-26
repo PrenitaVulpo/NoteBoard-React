@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link, Redirect, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import api from '../../services/api';
-import { useHistory} from 'react-router-dom';
 //import api from '../../services/MockAPIs/posts-no-header';
 import Logo from '../../assets/images/logo.svg';
 import 'materialize-css/dist/css/materialize.min.css';
 import * as LoginAction from '../../store/actions/login';
-import { createBrowserHistory } from 'history';
 
 
 function Landing({username, header, dispatch}){
@@ -16,7 +14,7 @@ function Landing({username, header, dispatch}){
     return <Redirect to="/feed/"/>
   }
 
-  const history= createBrowserHistory()
+  const history= useHistory()
   
   ;
   async function apiCall(){
