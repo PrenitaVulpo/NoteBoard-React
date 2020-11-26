@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 //import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
-import api from '../../services/api';
-//import api from '../../services/MockAPIs/posts-no-header';
+//import api from '../../services/api';
+import api from '../../services/MockAPIs/posts-no-header';
 import Logo from '../../assets/images/logo.png';
 import 'materialize-css/dist/css/materialize.min.css';
 
 function Landing({username, header, dispatch}){
 
-  function toggleSession(user, senha){
+  function toggleSession(user, token){
     return{
       type: 'TOGGLE_SESSION',
       user, 
@@ -21,18 +21,16 @@ function Landing({username, header, dispatch}){
   async function apiCall(){
     let parameters = {"username": login, "password": senha}
     let res = ''
-    await api.post('auth',parameters, {
-      header: {
-        'Content-Type': "application/json"
-      }
-    })
+    await api.post('auth',parameters)
       .then(response=>{
         console.log(response.data);
-        res = response.data.token
+        res = response.data.token;
+        dispatch(toggleSession(login,res))
       }).catch(err => {
         console.log(err.message)
       }
     )
+    
   }
 
   const [login, setLogin] = useState('');
