@@ -1,31 +1,33 @@
 import React, {useState} from 'react';
-//import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
-//import api from '../../services/api';
-import api from '../../services/MockAPIs/posts-no-header';
-import Logo from '../../assets/images/logo.png';
+import api from '../../services/api';
+import { useHistory} from 'react-router-dom';
+//import api from '../../services/MockAPIs/posts-no-header';
+import Logo from '../../assets/images/logo.svg';
 import 'materialize-css/dist/css/materialize.min.css';
+import * as LoginAction from '../../store/actions/login';
+import { createBrowserHistory } from 'history';
+
 
 function Landing({username, header, dispatch}){
 
-  function toggleSession(user, token){
-    return{
-      type: 'TOGGLE_SESSION',
-      user, 
-      token
-
-    }
+  function toFeed(){
+    return <Redirect to="/feed/"/>
   }
-  //dispatch(toggleSession(login, 'udashfusdufhudsahifuhdsaiugfuadsguhuvhuhdsiahih'))
 
+  const history= createBrowserHistory()
+  
+  ;
   async function apiCall(){
     let parameters = {"username": login, "password": senha}
     let res = ''
-    await api.post('auth',parameters)
+    await api.post('auth/',parameters)
       .then(response=>{
-        console.log(response.data);
+        //console.log(response.data);
         res = response.data.token;
-        dispatch(toggleSession(login,res))
+        dispatch(LoginAction.toggleSession(login,res));
+        history.push('feed/')
       }).catch(err => {
         console.log(err.message)
       }
@@ -35,7 +37,6 @@ function Landing({username, header, dispatch}){
 
   const [login, setLogin] = useState('');
   const [senha, setSenha] = useState('');
-  const [token, setToken] = useState('');
 
   return(
     <>
@@ -63,7 +64,6 @@ function Landing({username, header, dispatch}){
               <div className="center-align">
                 <button onClick={apiCall}>entrar</button>
                 <br />
-                <a to="/cadastro" id="routea">Não tem conta? Cadastre-se aqui!</a>
               </div>
             </div>
           </div>
