@@ -6,3 +6,12 @@ export function toggleSession(user, token){
 
   }
 }
+
+export function toggleLogout(user, token){
+  return{
+    type: 'TOGGLE_LOGOUT',
+    user, 
+    token
+
+  }
+}

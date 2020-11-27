@@ -1,22 +1,21 @@
 import React from 'react';
 import Nav from '../../components/nav/index';
 import Feed from '../../components/feedComponent';
-import { useHistory, Redirect} from 'react-router-dom';
+import { Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 
 // import { Container } from './styles';
 
-function FeedPage({token}){
+function FeedPage({token, username}){
 
-  const history= useHistory()
 
   if(token){
     console.log(`token da sessão = ${token}`)
     return(
       <div className="feed">
         <Nav />
-        <Feed classname="container" token={token}/>
+        <Feed classname="container" token={token} name={username}/>
       </div>
     )
     } else {
@@ -25,4 +24,6 @@ function FeedPage({token}){
     }
 }
 
-export default connect(state=>({token: state.header}))(FeedPage)
+export default connect(state=>({
+  token: state.header,
+  username: state.user  }))(FeedPage)

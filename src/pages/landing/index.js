@@ -2,17 +2,12 @@ import React, {useState} from 'react';
 import {Link, Redirect, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import api from '../../services/api';
-//import api from '../../services/MockAPIs/posts-no-header';
 import Logo from '../../assets/images/logo.svg';
 import 'materialize-css/dist/css/materialize.min.css';
 import * as LoginAction from '../../store/actions/login';
 
 
 function Landing({username, header, dispatch}){
-
-  function toFeed(){
-    return <Redirect to="/feed/"/>
-  }
 
   const history= useHistory()
   

@@ -2,6 +2,9 @@ import React from 'react';
 import {BrowserRouter, Switch, Route, Redirect} from 'react-router-dom';
 import Landing from './pages/landing';
 import FeedPage from './pages/feedPage';
+import PostPost from './pages/criarPostagem';
+import ListUsers from './pages/listUsers';
+import ListPosts from './pages/userPage';
 
 
 /*function CustomRoute({isPrivate, ...rest}){
@@ -32,6 +35,9 @@ const Router = () => {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/feed" component={FeedPage}/>
+          <Route exact path="/post" component={PostPost}/>
+          <Route exact path="/users" component={ListUsers}/>
+          <Route exact path="/user/:id" component={ListPosts}/>
         </Switch>
       </BrowserRouter>    
   )
