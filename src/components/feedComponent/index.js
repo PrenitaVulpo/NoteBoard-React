@@ -12,8 +12,11 @@ class Feed extends Component{
     this.state ={
       posts: [
         {
-          "author_name": "Loading",
-          "content": "Loading"
+          "id": 0,
+          "content": "Loading",
+          "author_name": "Loading", 
+          "created_at": "Loading",
+          "updated_at": "Loading"
         }
       ],
       name: ''

@@ -1,30 +1,17 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import del from '../../assets/images/delete.svg';
-import edit from '../../assets/images/edit.svg';
+import api from '../../services/api'
 
 
-// import { Container } from './styles';
 
-class cardComponent extends Component {
+class cardComponent extends Component{
 
-  constructor(props){
-    super(props)
-    this.state ={
-      post: {},
-      editable: false,
-      edited: false
-    }
+  //console.log("updated on: ", props.post)
+
+  deletePost() {
+    console.log("apagar")
   }
 
-  componentDidMount(){
-    this.setState({
-      post: this.props.post,
-      editable: this.props.editable,
-      edited: this.props.edited
-    })
-  }
-  
   render(){
     return (
       <div key={this.props.post.id} id="post">
@@ -38,10 +25,11 @@ class cardComponent extends Component {
             </div>
             {this.props.editable ? <div class="card-action">
               <Link to="/" id="edit">editar</Link>
-              <Link to="/" id="delete">apagar</Link>
+              <button onclick={this.deletePost.bind(this)}>apagar</button>
             </div>: null}
             <div class="card-action">
-              {this.props.edited ? <p>editado</p> : null}
+              {this.props.post.created_at.substring(11,19) !== this.props.post.updated_at.substring(11,19) 
+              ? <p>editado</p> : null}
             </div>
           </div>
         </div>

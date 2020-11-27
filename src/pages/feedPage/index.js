@@ -1,11 +1,9 @@
 import React from 'react';
 import Nav from '../../components/nav/index';
 import Feed from '../../components/feedComponent';
-import { Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 
-// import { Container } from './styles';
 
 function FeedPage({token, username}){
 
