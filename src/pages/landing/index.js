@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Link, Redirect, useHistory} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import api from '../../services/api';
 import Logo from '../../assets/images/logo.svg';
@@ -57,6 +57,7 @@ function Landing({username, header, dispatch}){
               <div className="center-align">
                 <button onClick={apiCall}>entrar</button>
                 <br />
+                <Link to="/cadastro">Não possui conta? Registre-se agora mesmo!</Link>
               </div>
             </div>
           </div>

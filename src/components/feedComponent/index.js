@@ -39,9 +39,9 @@ render(){
       <div id="main">
         <div id="feed">
           {this.state.posts.reverse().map(post=>{
-            if(post.author_name == this.props.name){
+            if(post.author_name === this.props.name){
               return (
-                <div id="post">
+                <div key={post.id} id="post">
                   <div className="col s12 m3">
                     <div class="card">
                       <div class="card-content">
