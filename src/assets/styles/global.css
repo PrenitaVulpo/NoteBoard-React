@@ -13,3 +13,23 @@
   , var(--color-gradient-3), var(--color-gradient-4), var(--color-gradient-5));
 
 }
+
+.button{
+  font: 600 1.5rem Roboto;
+  color: #fff;
+  width: 60%;
+  border: none;
+  border-radius: 25px;
+  transition: 0.4s;
+  background-color: var(--color-gradient-4);
+
+}
+
+.button:hover{
+  background-color: var(--color-gradient-5);
+}
+
+.linkText{
+  font: 400 1rem Roboto;
+  color: var(--color-text);
+}

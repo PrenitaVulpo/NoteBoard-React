@@ -55,9 +55,9 @@ function Landing({username, header, dispatch}){
                 </div>
               </div>
               <div className="center-align">
-                <button onClick={apiCall}>entrar</button>
+                <button onClick={apiCall} className="button">entrar</button>
                 <br />
-                <Link to="/cadastro">Não possui conta? Registre-se agora mesmo!</Link>
+                <Link to="/cadastro" className="linkText">Não possui conta? Registre-se agora mesmo!</Link>
               </div>
             </div>
           </div>

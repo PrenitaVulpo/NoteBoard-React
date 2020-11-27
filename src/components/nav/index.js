@@ -35,7 +35,7 @@ function Nav({dispatch}) {
             <li><HeaderLink destination="/feed" content="Feed" /></li>
             <li><HeaderLink destination="/users" content="Usuários" /></li>
             <li><HeaderLink destination="/post" content="Postar" /></li>
-            <li ><button onClick={Logout}>Sair</button></li>
+            <li ><button className="button" id="navButton" onClick={Logout}>Sair</button></li>
           </ul>
         </div>
       </nav>

@@ -70,9 +70,10 @@ function Cadastro(){
 
 
               <div className="center-align">
-                <button type="button" onClick={handleSignUp}>Cadastre-se</button>
+                <button className="button" type="button" onClick={handleSignUp}>
+                  Cadastre-se</button>
                 <br />
-                <Link to="/" id="routeLink">Já possui uma conta? Faça Login!</Link>
+                <Link to="/" id="routeLink" className="linkText">Já possui uma conta? Faça Login!</Link>
               </div>
             </form>
           </div>

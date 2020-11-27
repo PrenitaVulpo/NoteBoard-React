@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import api from '../../services/api';
 import {Link} from 'react-router-dom';
+import Card from '../cardComponent'
+import './style.css'
 
 
 class Feed extends Component{
@@ -41,36 +43,11 @@ render(){
           {this.state.posts.reverse().map(post=>{
             if(post.author_name === this.props.name){
               return (
-                <div key={post.id} id="post">
-                  <div className="col s12 m3">
-                    <div class="card">
-                      <div class="card-content">
-                        <p>{post.content}</p>
-                      </div>
-                      <div class="card-action">
-                        <p>{post.author_name}</p>
-                      </div>
-                      <div class="card-action">
-                        <Link to="/">editar</Link>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <Card id="card" post={post} editable={true} edited={false}/>
                 )
             } else { 
               return(
-                <div id="post">
-                  <div className="col s12 m3">
-                    <div class="card">
-                      <div class="card-content">
-                        <p>{post.content}</p>
-                      </div>
-                      <div class="card-action">
-                        <p>{post.author_name}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <Card post={post} editable={false} edited={false}/>
               )
               }
             })

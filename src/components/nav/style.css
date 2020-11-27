@@ -1,9 +1,12 @@
-button {
-  background: var(--color-gradient-5);
-  width: 100%;
-  height: 100%
+#navButton {
+  width: 5vw;
+  font: 1rem;
+  background-color: var(--color-gradient-4)
 }
 
+#navButton:hover {
+  background-color: var(--color-gradient-5)
+}
 #logo {
   object-fit: contain;
 }
