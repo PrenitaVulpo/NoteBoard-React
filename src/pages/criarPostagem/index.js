@@ -19,7 +19,7 @@ function CriarPostagem({token}){
           alert("post criado com sucesso!");
           history.push('/feed')
       }).catch(error=>{
-        alert("problema na criação do post");
+        alert(error.message);
         console.log(error.message)
       })
   }

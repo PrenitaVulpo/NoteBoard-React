@@ -7,6 +7,7 @@ import ListUsers from './pages/listUsers';
 import ListPosts from './pages/userPage';
 import EditPost from './pages/editPost';
 import Cadastro from './pages/cadastro';
+import Error404 from './pages/404';
 import CustomRoute from './CustomRoutes';
 
 
@@ -23,7 +24,7 @@ const Router = () => {
           <CustomRoute exact path="/user/:id" component={ListPosts}/>
           <CustomRoute exact path="/feed/posts/:id" component={EditPost}/>
           <CustomRoute exact path="/posts/:id" component={EditPost}/>
-          <Route path="*" component={()=><strong>404</strong>}/>
+          <Route path="*" component={Error404}/>
         </Switch>
       </BrowserRouter>    
   )
