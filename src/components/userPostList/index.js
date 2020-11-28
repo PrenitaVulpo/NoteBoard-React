@@ -6,7 +6,7 @@ class UserDetails extends Component{
     super(props)
     this.state ={
       user: {
-        "username": "",
+        "username": "Loading",
         "email": "Loading"
       },
       posts: []
@@ -14,16 +14,13 @@ class UserDetails extends Component{
   }
 
   async componentDidMount(){
-    console.log(`id: ${this.props.id}`)
     await api.get(`users/${this.props.id}/`,
     {headers: {'Authorization': `token ${this.props.token}`}})
       .then(response=>{
-        console.log(response.data)
         this.setState({user: response.data,
           posts: response.data.posts
         })
       }).catch(error=>{
-        console.log(error.message);
         alert(error.message);
       })
   }

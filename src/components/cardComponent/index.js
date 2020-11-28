@@ -11,7 +11,6 @@ function CardComponent (props){
   const history = useHistory();
 
 
-  //console.log("updated on: ", props.post)
   
 
   function deletePost() {
@@ -22,9 +21,8 @@ function CardComponent (props){
         setShow(false)
       }).catch(err=>{
         alert(err.message);
-        console.log(err.message);
+        
       });
-    console.log("apagar")
   }
 
   function openModal(){
@@ -32,7 +30,7 @@ function CardComponent (props){
     history.push(`posts/${props.post.id}`)
   }
 
-  function editPost() {
+  /*function editPost() {
     api.put(`https://paguru-challenge.herokuapp.com/api/v1/posts/${props.post.id}/`,
     {headers: {'Authorization': `token ${props.token}`}})
       .then(response=>{
@@ -40,10 +38,8 @@ function CardComponent (props){
         window.location.reload();
       }).catch(err=>{
         alert(err.message);
-        console.log(err.message);
       });
-    console.log("editar");
-  }
+  }*/
 
   if (show === true){
     return (

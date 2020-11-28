@@ -17,13 +17,11 @@ function Landing({username, header, dispatch}){
     let res = '';
     await api.post('auth/',parameters)
       .then(response=>{
-        //console.log(response.data);
         res = response.data.token;
         dispatch(LoginAction.toggleSession(login,res));
         localStorage.setItem("session", res)
         history.push('feed/')
       }).catch(err => {
-        console.log(err.message)
       }
     )
     

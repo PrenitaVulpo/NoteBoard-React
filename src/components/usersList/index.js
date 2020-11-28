@@ -14,14 +14,11 @@ class ListUsers extends Component{
   }
 
   async componentDidMount(){
-    console.log(this.props.token);
     await api.get('users/',
     {headers: {'Authorization': `token ${this.props.token}`}})
       .then(response=>{
-        console.log(response.data)
         this.setState({users: response.data.results})
       }).catch(error=>{
-        console.log(error.message);
         alert(error.message);
       })
   }

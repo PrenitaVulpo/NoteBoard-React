@@ -7,7 +7,6 @@ import {connect} from 'react-redux';
 
 function userPage({token, match}) {
   let id = match.params.id;
-  console.log(id)
   return (
     <div>
       <Nav/>

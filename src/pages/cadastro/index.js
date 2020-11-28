@@ -22,12 +22,10 @@ function Cadastro(){
         }
       })
       .then((response) => {
-        console.log(response);
         alert("Sucesso!");
         history.push("/");
       })
       .catch(error=>{
-        console.log(error)
         alert(error.message)
       })
     } else {

@@ -11,7 +11,6 @@ function CriarPostagem({token}){
   
   async function handleSubmit(){
     let content = {"content": text};
-    console.log(`token: ${token} & ${content}`)
 
     await api.post('posts/', content,
     {headers: {'Authorization': `token ${token}`}})
@@ -20,7 +19,6 @@ function CriarPostagem({token}){
           history.push('/feed')
       }).catch(error=>{
         alert(error.message);
-        console.log(error.message)
       })
   }
 

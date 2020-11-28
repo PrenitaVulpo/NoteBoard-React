@@ -20,16 +20,13 @@ function EditPost({token, match}){
           setDisplayText(response.data.content)
       }).catch(error=>{
         alert("problema na criação do post");
-        console.log(error.message)
       })
       document.getElementById("my_textarea2").innerText = displayText
-    console.log("inner text", displayText)
 
   },[])
   
   async function handleSubmit(){
     let content = {"content": text};
-    console.log(`token: ${token} & ${content}`)
 
     await api.post('posts/', content,
     {headers: {'Authorization': `token ${token}`}})
@@ -38,7 +35,6 @@ function EditPost({token, match}){
           history.push('/feed')
       }).catch(error=>{
         alert("problema na criação do post");
-        console.log(error.message)
       })
   }
 

@@ -32,7 +32,6 @@ class Feed extends Component{
       headers: {'Authorization': `token ${this.props.token}`}
     });
 
-    console.log("moreposts", response.data);
 
     while (data.next){
       this.moreposts()
@@ -46,7 +45,6 @@ class Feed extends Component{
       .then(response=>{
         return response.data.count
       }).catch(error=>{
-        console.log(error.message);
         alert(error.message);
       })
     await api.get(`posts/?limit=${limit}`,
@@ -54,7 +52,6 @@ class Feed extends Component{
       .then(response=>{
         this.setState({posts: response.data.results})
       }).catch(error=>{
-        console.log(error.message);
         alert(error.message);
       })
   
