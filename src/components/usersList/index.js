@@ -7,7 +7,7 @@ class ListUsers extends Component{
     super(props)
     this.state ={
       users: [
-        {"username": "Loading",
+        {"username": "",
         "email": "Loading"}
       ]
     }

@@ -6,7 +6,7 @@ class UserDetails extends Component{
     super(props)
     this.state ={
       user: {
-        "username": "Loading",
+        "username": "",
         "email": "Loading"
       },
       posts: []
@@ -36,15 +36,15 @@ class UserDetails extends Component{
         <table>
           <tr>
             <th>Post</th>
-            <th>Crado em:</th>
+            <th>Criado em:</th>
             <th>Modificado em:</th>
           </tr>
           {this.state.posts.map(post=>{
             return( 
               <tr>
                 <th>{post.content}</th>
-                <th>{post.created_at}</th>
-                <th>{post.updated_at}</th>
+                <th>{`${post.created_at.substring(0,10)} às ${post.created_at.substring(11,19)}`}</th>
+                <th>{`${post.updated_at.substring(0,10)} às ${post.updated_at.substring(11,19)}`}</th>
               </tr>
             )
            })
