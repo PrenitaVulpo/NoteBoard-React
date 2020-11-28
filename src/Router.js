@@ -5,6 +5,7 @@ import FeedPage from './pages/feedPage';
 import PostPost from './pages/criarPostagem';
 import ListUsers from './pages/listUsers';
 import ListPosts from './pages/userPage';
+import EditPost from './pages/editPost';
 import Cadastro from './pages/cadastro';
 import CustomRoute from './CustomRoutes';
 
@@ -20,6 +21,8 @@ const Router = () => {
           <CustomRoute exact path="/post" component={PostPost}/>
           <CustomRoute exact path="/users" component={ListUsers}/>
           <CustomRoute exact path="/user/:id" component={ListPosts}/>
+          <CustomRoute exact path="/feed/posts/:id" component={EditPost}/>
+          <CustomRoute exact path="/posts/:id" component={EditPost}/>
           <Route path="*" component={()=><strong>404</strong>}/>
         </Switch>
       </BrowserRouter>    

@@ -61,19 +61,18 @@ class Feed extends Component{
   }
 
 render(){
-  var handleRefreshPage = this.handleRefreshPage
     return (
       <div id="main">
         <div id="feed">
           {this.state.posts.reverse().map(post=>{
             if(post.author_name === this.props.name){
               return (
-                <Card id="card" post={post} editable={true}  
+                <Card key={post.id} id="card" post={post} editable={true}  
                   user={this.props.user} token={this.props.token} />
                 )
             } else { 
               return(
-                <Card post={post} editable={false} token={this.props.token} user={this.props.user}/>
+                <Card key={post.id} post={post} editable={false} token={this.props.token} user={this.props.user}/>
               )
               }
             })
