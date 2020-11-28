@@ -21,6 +21,7 @@ function Nav({dispatch}) {
   let history = useHistory();
 
   async function Logout(){
+    localStorage.removeItem("teste")
     await dispatch(LoginAction.toggleSession(user,token))
     history.goBack();
 

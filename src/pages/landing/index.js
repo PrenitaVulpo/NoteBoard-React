@@ -14,12 +14,13 @@ function Landing({username, header, dispatch}){
   ;
   async function apiCall(){
     let parameters = {"username": login, "password": senha}
-    let res = ''
+    let res = '';
     await api.post('auth/',parameters)
       .then(response=>{
         //console.log(response.data);
         res = response.data.token;
         dispatch(LoginAction.toggleSession(login,res));
+        localStorage.setItem("session", res)
         history.push('feed/')
       }).catch(err => {
         console.log(err.message)

@@ -19,16 +19,37 @@ class Feed extends Component{
           "updated_at": "Loading"
         }
       ],
-      name: ''
+      name: '',
+    }
+  }
+
+
+
+  async moreposts(data){
+    
+    const response = await fetch(data.next, {
+      method: 'GET',
+      headers: {'Authorization': `token ${this.props.token}`}
+    });
+
+    console.log("moreposts", response.data);
+
+    while (data.next){
+      this.moreposts()
     }
   }
 
   async componentDidMount(){
-    console.log(this.props.token)
-    console.log(this.props.name)
     this.setState({session: this.props.name})
-    console.log(`state: ${this.props.name}`)
-    await api.get('posts/',
+    let limit = await api.get(`posts/`,
+    {headers: {'Authorization': `token ${this.props.token}`}})
+      .then(response=>{
+        return response.data.count
+      }).catch(error=>{
+        console.log(error.message);
+        alert(error.message);
+      })
+    await api.get(`posts/?limit=${limit}`,
     {headers: {'Authorization': `token ${this.props.token}`}})
       .then(response=>{
         this.setState({posts: response.data.results})
@@ -40,17 +61,19 @@ class Feed extends Component{
   }
 
 render(){
+  var handleRefreshPage = this.handleRefreshPage
     return (
       <div id="main">
         <div id="feed">
           {this.state.posts.reverse().map(post=>{
             if(post.author_name === this.props.name){
               return (
-                <Card id="card" post={post} editable={true} edited={false}/>
+                <Card id="card" post={post} editable={true}  
+                  user={this.props.user} token={this.props.token} />
                 )
             } else { 
               return(
-                <Card post={post} editable={false} edited={false}/>
+                <Card post={post} editable={false} token={this.props.token} user={this.props.user}/>
               )
               }
             })

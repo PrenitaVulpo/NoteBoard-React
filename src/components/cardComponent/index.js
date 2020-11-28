@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import api from '../../services/api'
 
 
@@ -7,18 +7,40 @@ import api from '../../services/api'
 class cardComponent extends Component{
 
   //console.log("updated on: ", props.post)
+  state ={
+    show: true
+  }
+  
 
   deletePost() {
-    alert("função desabilitada")
+    api.delete(`https://paguru-challenge.herokuapp.com/api/v1/posts/${this.props.post.id}/`,
+    {headers: {'Authorization': `token ${this.props.token}`}})
+      .then(response=>{
+        alert("postagem deletada com sucesso!");
+        this.setState({show: false})
+      }).catch(err=>{
+        alert(err.message);
+        console.log(err.message);
+      });
     console.log("apagar")
   }
 
   editPost() {
-    alert("função desabilitada")
-    console.log("editar")
+    alert("função desabilitada");  
+    api.put(`https://paguru-challenge.herokuapp.com/api/v1/posts/${this.props.post.id}/`,
+    {headers: {'Authorization': `token ${this.props.token}`}})
+      .then(response=>{
+        alert("postagem deletada com sucesso!");
+        window.location.reload();
+      }).catch(err=>{
+        alert(err.message);
+        console.log(err.message);
+      });
+    console.log("editar");
   }
 
   render(){
+    if (this.state.show == true){
     return (
       <div key={this.props.post.id} id="post">
         <div className="col s12 m3">
@@ -41,6 +63,9 @@ class cardComponent extends Component{
         </div>
       </div>
     );
+    } else {
+      return <div/>
+    }
   }
 }
 
