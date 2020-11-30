@@ -14,7 +14,7 @@ function EditPost({token, match}){
 
 
   useEffect(()=>{
-    api.get(`posts/${id}`,
+    api.get(`posts/${id}/`,
     {headers: {'Authorization': `token ${token}`}})
       .then(response=>{
           setDisplayText(response.data.content)
@@ -28,13 +28,14 @@ function EditPost({token, match}){
   async function handleSubmit(){
     let content = {"content": text};
 
-    await api.post('posts/', content,
+    await api.put(`posts/${id}/`, content,
     {headers: {'Authorization': `token ${token}`}})
       .then(response=>{
           alert("post criado com sucesso!");
           history.push('/feed')
       }).catch(error=>{
         alert("problema na criação do post");
+        console.log(error.message)
       })
   }
 
