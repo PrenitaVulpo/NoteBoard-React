@@ -3,6 +3,7 @@ import api from '../../services/api';
 import Nav from '../../components/nav'
 import { useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
+import Page from '../../components/Page'
 
 
 function EditPost({token, match}){
@@ -46,7 +47,7 @@ function EditPost({token, match}){
   return(
     <div>
       <Nav/>
-      <div className="row" >
+      <Page >
         <div className="col s12 m4 offset-m4">
           <div className="card">
             <div className="card-content">
@@ -59,7 +60,7 @@ function EditPost({token, match}){
             </div>
           </div>
         </div>
-      </div>
+      </Page>
 
     </div>
   )

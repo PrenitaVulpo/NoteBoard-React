@@ -25,38 +25,27 @@ function CardComponent (props){
       });
   }
 
-  function openModal(){
+  function openEdit(){
 
     history.push(`posts/${props.post.id}`)
   }
-
-  /*function editPost() {
-    api.put(`https://paguru-challenge.herokuapp.com/api/v1/posts/${props.post.id}/`,
-    {headers: {'Authorization': `token ${props.token}`}})
-      .then(response=>{
-        alert("postagem deletada com sucesso!");
-        window.location.reload();
-      }).catch(err=>{
-        alert(err.message);
-      });
-  }*/
 
   if (show === true){
     return (
       <div key={props.post.id} id="post">
         <div className="col s12 m3">
-          <div class="card">
-            <div class="card-content">
+          <div className="card">
+            <div className="card-content">
               <p>{props.post.content}</p>
             </div>
-            <div class="card-action">
+            <div className="card-content">
               <p>{props.post.author_name}</p>
             </div>
-            {props.editable ? <div class="card-action">
-              <button onClick={openModal}>editar</button>
+            {props.editable ? <div className="card-action">
+              <button onClick={openEdit}>editar</button>
               <button onClick={deletePost}>apagar</button>
             </div>: null}
-            <div class="card-action">
+            <div className="card-content">
               {props.post.created_at.substring(11,19) !== props.post.updated_at.substring(11,19) 
               ? <p>editado</p> : null}
             </div>

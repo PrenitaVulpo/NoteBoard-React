@@ -12,7 +12,7 @@ function FeedPage({token, username}){
     return(
       <div className="feed">
         <Nav />
-        <Feed classname="container" token={token} name={username}/>
+        <Feed className="container" token={token} name={username}/>
       </div>
     )
     
